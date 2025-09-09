@@ -1,0 +1,13 @@
+
+opencv-python
+yt-dlp
+torch
+openai-whisper
+transformers
+moviepy
+pytube 
+moviepy
+openai-whisper
+gradio
+validators
+elevenlabs

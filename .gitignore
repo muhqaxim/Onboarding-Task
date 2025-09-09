@@ -1,0 +1,39 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+env/
+.env/
+vtp_venv/
+# Ignore virtual environment
+vtp_venv/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDE configs
+.vscode/
+.idea/
+
+# Data & outputs
+data/raw/
+data/processed/
+output/logs/
+output/podcasts/
+output/stories/
+*.mp4
+*.wav
+*.mp3
+
+# System files
+.DS_Store
+Thumbs.db

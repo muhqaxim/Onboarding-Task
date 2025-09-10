@@ -28,6 +28,8 @@ def generate_story_with_groq(audio_text, visual_texts, genre="adventure"):
 
     headers = {"Authorization": f"Bearer {GROQ_API_KEY}", "Content-Type": "application/json"}
     response = requests.post(GROQ_API_URL, headers=headers, json=payload)
+    print("Groq API response status:", response.status_code)
+    print("Groq API response from groq:")
 
     if response.status_code == 200:
         result = response.json()

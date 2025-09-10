@@ -11,6 +11,7 @@ blip_model = BlipForConditionalGeneration.from_pretrained(
 ).to(device)
 
 def extract_video_frames(video_path, threshold=30.0):
+    print("Extracting video frames and generating captions...")
     cap = cv2.VideoCapture(video_path)
     prev_hist = None
     texts = []
@@ -34,6 +35,7 @@ def extract_video_frames(video_path, threshold=30.0):
                 texts.append(caption)
 
         prev_hist = hist
+    print("Extracting video extract_video_frames")
 
     cap.release()
     return texts

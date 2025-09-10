@@ -1,34 +1,18 @@
-# import requests
-# from scr.utils.config_loader import ELEVEN_API_KEY, VOICE_ID
+import os
+from elevenlabs import generate, save, set_api_key
 
-# def text_to_speech(text, filename):
-#     url = f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}"
-#     headers = {"xi-api-key": ELEVEN_API_KEY, "Content-Type": "application/json"}
-#     data = {"text": text, "voice_settings": {"stability": 0.5, "similarity_boost": 0.75}}
+# Set your API key (use env var if available, otherwise fallback to hardcoded key)
+set_api_key(os.getenv("ELEVEN_API_KEY", "sk_eb78a9752bf04c9288f8d3bcc018a4b9967cc19015dabca1"))
 
-#     response = requests.post(url, headers=headers, json=data)
-#     if response.status_code == 200:
-#         with open(filename, "wb") as f:
-#             f.write(response.content)
-#     else:
-#         raise Exception("ElevenLabs Error: " + response.text)
-from elevenlabs import ElevenLabs
-
-# Initialize client once (reuse instead of re-creating in each call)
-client = ElevenLabs(api_key="YOUR_API_KEY")  # replace with your real key
-
-def text_to_speech(text: str, output_file: str):
-    # Generate audio from text
-    audio = client.generate(
+def text_to_speech(text: str, output_file: str, voice: str = "Rachel"):
+    # Generate audio
+    audio = generate(
         text=text,
-        voice="Rachel",  # you can change to another available voice
+        voice=voice,
         model="eleven_multilingual_v2"
     )
 
     # Save audio to file
-    with open(output_file, "wb") as f:
-        f.write(audio)
-
+    save(audio, output_file)
     print(f"✅ Audio saved to {output_file}")
-
-
+    return output_file
